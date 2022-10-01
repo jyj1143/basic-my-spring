@@ -3,10 +3,13 @@ package hello.core.discount;
 import hello.core.AppConfig;
 import hello.core.member.Grade;
 import hello.core.member.Member;
+import hello.core.member.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
 class RateDiscountPolicyTest {
@@ -15,8 +18,11 @@ class RateDiscountPolicyTest {
 
     @BeforeEach
     public void beforeEach() {
-        AppConfig appConfig = new AppConfig();
-        discountPolicy = appConfig.discountPolicy();
+//        AppConfig appConfig = new AppConfig();
+//        discountPolicy = appConfig.discountPolicy();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        discountPolicy=applicationContext.getBean("discountPolicy", DiscountPolicy.class);
+
     }
 
     @Test
