@@ -28,4 +28,12 @@ public class OrderServiceimpl implements OrderService{
 
         return new Order(meberId, itemName, itemPrice, disocuntPrice);
     }
+
+    //테스트 용도
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
+    }
+
+
+
 }
