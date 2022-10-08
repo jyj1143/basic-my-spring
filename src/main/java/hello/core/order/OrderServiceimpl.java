@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotaion.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
 import hello.core.member.Member;
@@ -20,7 +21,7 @@ public class OrderServiceimpl implements OrderService{
     private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceimpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceimpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
