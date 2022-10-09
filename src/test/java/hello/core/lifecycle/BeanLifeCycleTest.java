@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class BeanLifeCycleTest {
 
     @Test
-    public void lifeCycleTest() {
+    public void  lifeCycleTest() {
 
         ConfigurableApplicationContext ac = new AnnotationConfigApplicationContext(LifeCycleConfig.class);
         NetworkClient client0 = ac.getBean(NetworkClient.class);
@@ -19,7 +19,7 @@ public class BeanLifeCycleTest {
     @Configuration
     static class LifeCycleConfig {
 
-        @Bean
+        @Bean(initMethod = "init", destroyMethod = "close")
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://hello-spring.dev");
